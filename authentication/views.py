@@ -1,40 +1,34 @@
-# from rest_framework.decorators import api_view, authentication_classes, permission_classes
-# from rest_framework.authentication import SessionAuthentication, TokenAuthentication
-# from rest_framework.permissions import IsAuthenticated
-# from rest_framework.response import Response
-# from rest_framework import status
+from django.shortcuts import render, redirect
+from django.contrib.auth import authenticate, login
+from django.contrib.auth.models import User
+from .forms import UserRegistrationForm
+from employees.models import Employee
+from customers.models import Customer
 
-# from django.shortcuts import get_object_or_404
-# from django.contrib.auth.models import User
-# from rest_framework.authtoken.models import Token
+# Registration View
+def register(request):
+    if request.method == 'POST':
+        form = UserRegistrationForm(request.POST)
+        if form.is_valid():
+            # Create a new user
+            new_user = form.save(commit=False)
+            new_user.set_password(form.cleaned_data['password'])
+            new_user.save()
 
-# from .serializer import UserSerializer
+            # Check if the user is registering as an Employee or Customer
+            if form.cleaned_data['user_type'] == 'employee':
+                Employee.objects.create(user=new_user)
+            else:
+                Customer.objects.create(user=new_user)
 
-# @api_view(['POST'])
-# def signup(request):
-#     serializer = UserSerializer(data=request.data)
-#     if serializer.is_valid():
-#         serializer.save()
-#         user = User.objects.get(username=request.data['username'])
-#         user.set_password(request.data['password'])
-#         user.save()
-#         token = Token.objects.create(user=user)
-#         return Response({'token': token.key, 'user': serializer.data})
-#     return Response(serializer.errors, status=status.HTTP_200_OK)
+            # Automatically log in the user after registration
+            login(request, new_user)
+            return redirect('dashboard')  # Redirect to a dashboard or home page
+    else:
+        form = UserRegistrationForm()
 
-# @api_view(['POST'])
-# def login(request):
-#     user = get_object_or_404(User, username=request.data['username'])
-#     if not user.check_password(request.data['password']):
-#         return Response("missing user", status=status.HTTP_404_NOT_FOUND)
-#     token, created = Token.objects.get_or_create(user=user)
-#     serializer = UserSerializer(user)
-#     return Response({'token': token.key, 'user': serializer.data})
+    return render(request, 'registration/register.html', {'form': form})
 
-# @api_view(['GET'])
-# @authentication_classes([SessionAuthentication, TokenAuthentication])
-# @permission_classes([IsAuthenticated])
-# def test_token(request):
-#     return Response("passed!")
-
-
+# Dashboard view (placeholder for post-login)
+def dashboard(request):
+    return render(request, 'dashboard.html')

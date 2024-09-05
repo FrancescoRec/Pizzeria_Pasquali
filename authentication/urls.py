@@ -1,6 +1,10 @@
-# from django.urls import path, include
+from django.urls import path
+from django.contrib.auth import views as auth_views
+from . import views
 
-# urlpatterns = [
-#     path('auth/', include('dj_rest_auth.urls')),  # For login, logout, password reset, etc.
-#     path('auth/registration/', include('dj_rest_auth.registration.urls')),  # For registration
-# ]
+urlpatterns = [
+    path('register/', views.register, name='register'),  # Custom register view
+    path('login/', auth_views.LoginView.as_view(template_name='registration/login.html'), name='login'),  # Django built-in login view
+    path('logout/', auth_views.LogoutView.as_view(), name='logout'),  # Django built-in logout view
+    path('dashboard/', views.dashboard, name='dashboard'),  # Redirect after login
+]
