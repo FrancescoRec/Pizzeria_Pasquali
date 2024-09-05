@@ -282,3 +282,8 @@ webpack-stats.json
 .env
 .envs/*
 !.envs/.local/
+
+
+# Ignore SQLite database file
+db.sqlite3
+
