@@ -4,6 +4,7 @@ from django.contrib.auth.models import User
 from .forms import UserRegistrationForm
 from employees.models import Employee
 from customers.models import Customer
+from django.contrib.auth.decorators import login_required
 
 # Registration View
 def register(request):
@@ -30,5 +31,6 @@ def register(request):
     return render(request, 'registration/register.html', {'form': form})
 
 # Dashboard view (placeholder for post-login)
+@login_required
 def dashboard(request):
     return render(request, 'dashboard.html')
