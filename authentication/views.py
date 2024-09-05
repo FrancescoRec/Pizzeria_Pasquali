@@ -5,6 +5,7 @@ from .forms import UserRegistrationForm
 from employees.models import Employee
 from customers.models import Customer
 from django.contrib.auth.decorators import login_required
+from django.http import HttpResponse
 
 # Registration View
 def register(request):
@@ -34,3 +35,10 @@ def register(request):
 @login_required
 def dashboard(request):
     return render(request, 'dashboard.html')
+
+@login_required
+def employee_dashboard(request):
+    if request.user.employee.is_approved:
+        return render(request, 'employee_dashboard.html')
+    else:
+        return HttpResponse("You are not approved to access this page.")
