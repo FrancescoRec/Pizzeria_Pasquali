@@ -1,0 +1,70 @@
+[
+    {
+        "name": "Margherita",
+        "toppings": [
+            {
+                "name": "Mozzarella"
+            },
+            {
+                "name": "Tomato"
+            }
+        ],
+        "price": "6.10",
+        "vegetarian": true,
+        "gluten_free": false
+    },
+    {
+        "name": "Marinara",
+        "toppings": [
+            {
+                "name": "Tomato"
+            },
+            {
+                "name": "Garlic"
+            },
+            {
+                "name": "Oregano"
+            }
+        ],
+        "price": "5.10",
+        "vegetarian": true,
+        "gluten_free": false
+    },
+    {
+        "name": "Prosciutto e funghi",
+        "toppings": [
+            {
+                "name": "Mozzarella"
+            },
+            {
+                "name": "Tomato"
+            },
+            {
+                "name": "Ham"
+            },
+            {
+                "name": "Mushrooms"
+            }
+        ],
+        "price": "7.90",
+        "vegetarian": false,
+        "gluten_free": false
+    },
+    {
+        "name": "Margherita con bufala",
+        "toppings": [
+            {
+                "name": "Mozzarella"
+            },
+            {
+                "name": "Tomato"
+            },
+            {
+                "name": "Mozzarella di bufala"
+            }
+        ],
+        "price": "8.90",
+        "vegetarian": true,
+        "gluten_free": false
+    }
+]
