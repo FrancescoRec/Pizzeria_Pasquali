@@ -282,6 +282,7 @@ webpack-stats.json
 .env
 .envs/*
 !.envs/.local/
+.vscode/
 
 
 # Ignore SQLite database file
