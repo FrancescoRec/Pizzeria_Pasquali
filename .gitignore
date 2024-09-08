@@ -289,5 +289,7 @@ webpack-stats.json
 db.sqlite3
 
 #Ignore migrations
-migrations/
+*/migrations/*
+!*/migrations/__init__.py
+
 
