@@ -288,3 +288,6 @@ webpack-stats.json
 # Ignore SQLite database file
 db.sqlite3
 
+#Ignore migrations
+migrations/
+
