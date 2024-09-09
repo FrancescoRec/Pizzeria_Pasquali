@@ -13,7 +13,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     # Third-party apps
     "rest_framework",
-    "drf-spectacular",
+    "drf_spectacular",
     # Local apps
     "api.pizzas.apps.PizzasConfig",
     "api.orders.apps.OrdersConfig",

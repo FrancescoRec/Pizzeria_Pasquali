@@ -1,0 +1,763 @@
+openapi: 3.0.3
+info:
+  title: Pizzeria Pasquali API
+  version: 1.0.0
+  description: API for Pizzeria Pasquali
+paths:
+  /customers/:
+    get:
+      operationId: customers_list
+      tags:
+      - customers
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Customer'
+          description: ''
+    post:
+      operationId: customers_create
+      tags:
+      - customers
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Customer'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Customer'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Customer'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - tokenAuth: []
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Customer'
+          description: ''
+  /customers/{id}/:
+    get:
+      operationId: customers_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this customer.
+        required: true
+      tags:
+      - customers
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Customer'
+          description: ''
+    put:
+      operationId: customers_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this customer.
+        required: true
+      tags:
+      - customers
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Customer'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Customer'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Customer'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Customer'
+          description: ''
+    patch:
+      operationId: customers_partial_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this customer.
+        required: true
+      tags:
+      - customers
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedCustomer'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedCustomer'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedCustomer'
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Customer'
+          description: ''
+    delete:
+      operationId: customers_destroy
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this customer.
+        required: true
+      tags:
+      - customers
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - tokenAuth: []
+      responses:
+        '204':
+          description: No response body
+  /employees/:
+    get:
+      operationId: employees_list
+      tags:
+      - employees
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Employee'
+          description: ''
+    post:
+      operationId: employees_create
+      tags:
+      - employees
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Employee'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Employee'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Employee'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - tokenAuth: []
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Employee'
+          description: ''
+  /employees/{id}/:
+    get:
+      operationId: employees_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this employee.
+        required: true
+      tags:
+      - employees
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Employee'
+          description: ''
+    put:
+      operationId: employees_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this employee.
+        required: true
+      tags:
+      - employees
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Employee'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Employee'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Employee'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Employee'
+          description: ''
+    patch:
+      operationId: employees_partial_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this employee.
+        required: true
+      tags:
+      - employees
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedEmployee'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedEmployee'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedEmployee'
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Employee'
+          description: ''
+    delete:
+      operationId: employees_destroy
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this employee.
+        required: true
+      tags:
+      - employees
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - tokenAuth: []
+      responses:
+        '204':
+          description: No response body
+  /pizzas/:
+    get:
+      operationId: pizzas_list
+      tags:
+      - pizzas
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Pizza'
+          description: ''
+    post:
+      operationId: pizzas_create
+      tags:
+      - pizzas
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Pizza'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Pizza'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Pizza'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - tokenAuth: []
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Pizza'
+          description: ''
+  /pizzas/{id}/:
+    get:
+      operationId: pizzas_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this pizza.
+        required: true
+      tags:
+      - pizzas
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Pizza'
+          description: ''
+    put:
+      operationId: pizzas_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this pizza.
+        required: true
+      tags:
+      - pizzas
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Pizza'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Pizza'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Pizza'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Pizza'
+          description: ''
+    patch:
+      operationId: pizzas_partial_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this pizza.
+        required: true
+      tags:
+      - pizzas
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedPizza'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedPizza'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedPizza'
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Pizza'
+          description: ''
+    delete:
+      operationId: pizzas_destroy
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this pizza.
+        required: true
+      tags:
+      - pizzas
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - tokenAuth: []
+      responses:
+        '204':
+          description: No response body
+  /toppings/:
+    get:
+      operationId: toppings_list
+      tags:
+      - toppings
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Topping'
+          description: ''
+    post:
+      operationId: toppings_create
+      tags:
+      - toppings
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Topping'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Topping'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Topping'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - tokenAuth: []
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Topping'
+          description: ''
+  /toppings/{id}/:
+    get:
+      operationId: toppings_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this topping.
+        required: true
+      tags:
+      - toppings
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Topping'
+          description: ''
+    put:
+      operationId: toppings_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this topping.
+        required: true
+      tags:
+      - toppings
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Topping'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Topping'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Topping'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Topping'
+          description: ''
+    patch:
+      operationId: toppings_partial_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this topping.
+        required: true
+      tags:
+      - toppings
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedTopping'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedTopping'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedTopping'
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Topping'
+          description: ''
+    delete:
+      operationId: toppings_destroy
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this topping.
+        required: true
+      tags:
+      - toppings
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - tokenAuth: []
+      responses:
+        '204':
+          description: No response body
+components:
+  schemas:
+    Customer:
+      type: object
+      properties:
+        user_id:
+          type: integer
+        username:
+          type: string
+          readOnly: true
+        phone_number:
+          type: string
+          maxLength: 20
+        email:
+          type: string
+          format: email
+          maxLength: 254
+      required:
+      - user_id
+      - username
+    Employee:
+      type: object
+      properties:
+        user_id:
+          type: integer
+        username:
+          type: string
+          readOnly: true
+        position:
+          type: string
+          maxLength: 50
+        phone_number:
+          type: string
+          maxLength: 20
+        email:
+          type: string
+          format: email
+          maxLength: 254
+        is_approved:
+          type: boolean
+      required:
+      - user_id
+      - username
+    PatchedCustomer:
+      type: object
+      properties:
+        user_id:
+          type: integer
+        username:
+          type: string
+          readOnly: true
+        phone_number:
+          type: string
+          maxLength: 20
+        email:
+          type: string
+          format: email
+          maxLength: 254
+    PatchedEmployee:
+      type: object
+      properties:
+        user_id:
+          type: integer
+        username:
+          type: string
+          readOnly: true
+        position:
+          type: string
+          maxLength: 50
+        phone_number:
+          type: string
+          maxLength: 20
+        email:
+          type: string
+          format: email
+          maxLength: 254
+        is_approved:
+          type: boolean
+    PatchedPizza:
+      type: object
+      properties:
+        name:
+          type: string
+          maxLength: 255
+        toppings:
+          type: array
+          items:
+            type: integer
+        price:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,3}(?:\.\d{0,2})?$
+        vegetarian:
+          type: boolean
+        gluten_free:
+          type: boolean
+    PatchedTopping:
+      type: object
+      properties:
+        name:
+          type: string
+          maxLength: 100
+    Pizza:
+      type: object
+      properties:
+        name:
+          type: string
+          maxLength: 255
+        toppings:
+          type: array
+          items:
+            type: integer
+        price:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,3}(?:\.\d{0,2})?$
+        vegetarian:
+          type: boolean
+        gluten_free:
+          type: boolean
+      required:
+      - name
+      - price
+      - toppings
+    Topping:
+      type: object
+      properties:
+        name:
+          type: string
+          maxLength: 100
+      required:
+      - name
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+    cookieAuth:
+      type: apiKey
+      in: cookie
+      name: sessionid
+    tokenAuth:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: Token-based authentication with required prefix "Token"
