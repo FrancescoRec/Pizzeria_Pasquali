@@ -41,11 +41,10 @@ INSTALLED_APPS = [
     # Third-party apps
     "rest_framework",
     # Local apps
-    "pizzas",
-    "orders",
-    "employees",
-    "customers",
-
+    "api.pizzas.apps.PizzasConfig",
+    "api.orders.apps.OrdersConfig",
+    "api.employees.apps.EmployeesConfig",
+    "api.customers.apps.CustomersConfig",
 ]
 
 # SITE_ID = 1

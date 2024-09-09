@@ -3,6 +3,7 @@
 
 # Ignore Python bytecode and cache directories
 __pycache__/
+.pytest_cache/
 .vscode/
 
 # Ignore SQLite database file (only used in local development)
@@ -11,6 +12,8 @@ db.sqlite3
 # Ignore Django migration files, except the __init__.py needed to mark the folder as a package
 */migrations/*
 !*/migrations/__init__.py
+
+
 
 
 
