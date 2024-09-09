@@ -1,13 +1,23 @@
 /* Basic layout for the form */
+body {
+    background-color: #e0e0e0;  /* Softer light gray background for the whole page */
+    font-family: Arial, sans-serif;
+}
+
 .container {
     max-width: 600px;
     margin: 0 auto;
     padding: 20px;
     font-family: Arial, sans-serif;
+    background-color: white;  /* White background for the content */
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);  /* Slight shadow for depth */
+    text-align: center;
 }
 
 h1, h2 {
     text-align: center;
+    color: #333;  /* Darker text color */
 }
 
 form {
@@ -47,20 +57,18 @@ button:hover {
     text-align: center;
 }
 
-.check-orders-button {
-    margin-top: 20px;
-}
-
 .check-orders-button a {
-    text-decoration: none;
-    color: white;
+    text-decoration: none; /* Remove underline */
+    color: white; /* Ensure text is white */
+    display: block; /* Make it behave like a block element (button) */
+    padding: 10px 40px;
+    background-color: #28a745; /* Green background */
+    border-radius: 5px;
+    cursor: pointer;
 }
 
-.check-orders-button {
-    padding: 10px 20px;
-    background-color: #28a745;
-    color: white;
-    border-radius: 5px;
+.check-orders-button a:hover {
+    background-color: #218838; /* Darker green on hover */
 }
 
 .logout {
@@ -70,4 +78,8 @@ button:hover {
 .logout a {
     text-decoration: none;
     color: red;
+}
+
+.logout a:hover {
+    color: darkred;
 }
