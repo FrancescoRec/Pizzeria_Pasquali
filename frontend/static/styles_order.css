@@ -1,0 +1,73 @@
+/* Basic layout for the form */
+.container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+}
+
+h1, h2 {
+    text-align: center;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.pizza-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.pizza-item input[type="number"] {
+    width: 50px;
+}
+
+button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+.footer {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.check-orders-button {
+    margin-top: 20px;
+}
+
+.check-orders-button a {
+    text-decoration: none;
+    color: white;
+}
+
+.check-orders-button {
+    padding: 10px 20px;
+    background-color: #28a745;
+    color: white;
+    border-radius: 5px;
+}
+
+.logout {
+    margin-top: 10px;
+}
+
+.logout a {
+    text-decoration: none;
+    color: red;
+}

@@ -15,9 +15,6 @@ def place_order(request):
     pizzas = Pizza.objects.all()  # Display all available pizzas for ordering
 
     if request.method == 'POST':
-        pizza_ids = request.POST.getlist('pizza')  # Get the selected pizza IDs
-        quantities = request.POST.getlist('quantity')  # Get the quantities
-
         # Fetch the current customer
         customer = Customer.objects.get(user=request.user)
 
@@ -25,12 +22,15 @@ def place_order(request):
         order = Order.objects.create(customer=customer)
         total_price = 0
 
-        # Loop through selected pizzas and create order items
-        for pizza_id, quantity in zip(pizza_ids, quantities):
-            pizza = Pizza.objects.get(id=pizza_id)
-            quantity = int(quantity)
-            OrderItem.objects.create(order=order, pizza=pizza, quantity=quantity)
-            total_price += pizza.price * quantity
+        # Loop through all pizzas and check if they were selected
+        for pizza in pizzas:
+            pizza_id = f'pizza_{pizza.id}'
+            quantity_id = f'quantity_{pizza.id}'
+
+            if pizza_id in request.POST:
+                quantity = int(request.POST.get(quantity_id, 1))  # Get the quantity for the pizza
+                OrderItem.objects.create(order=order, pizza=pizza, quantity=quantity)
+                total_price += pizza.price * quantity
 
         # Update total price and save the order
         order.total_price = total_price
@@ -40,6 +40,3 @@ def place_order(request):
         return redirect('customer_orders')
 
     return render(request, 'order_templates/place_order.html', {'pizzas': pizzas})
-
-
-
