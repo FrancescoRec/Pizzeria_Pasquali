@@ -3,6 +3,7 @@ from django.contrib.auth import login
 from .forms import UserRegistrationForm
 from api.employees.models import Employee
 from api.customers.models import Customer
+from api.pizzas.models import Pizza
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
 
@@ -38,10 +39,11 @@ def register(request):
 # Dashboard view (redirects employees to employee dashboard if they are approved)
 @login_required
 def dashboard(request):
+    pizzas = Pizza.objects.all()
     # Check if the user is an employee and is approved
     if hasattr(request.user, 'employee') and request.user.employee.is_approved:
         return redirect('employee_dashboard')  # Redirect to employee dashboard if approved
-    return render(request, 'dashboard.html')
+    return render(request, 'dashboard.html', {'pizzas': pizzas})
 
 # Employee dashboard view
 @login_required

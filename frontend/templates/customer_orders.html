@@ -1,0 +1,28 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Orders</title>
+</head>
+<body>
+    <h1>Your Orders</h1>
+    <ul>
+        {% for order in orders %}
+            <li>
+                <strong>Order #{{ order.id }} - {{ order.created_at }}</strong><br>
+                Status: {{ order.status }}<br>
+                Total: {{ order.total_price }}<br>
+                <ul>
+                    {% for item in order.items.all %}
+                        <li>{{ item.quantity }} x {{ item.pizza.name }}</li>
+                    {% endfor %}
+                </ul>
+            </li>
+        {% empty %}
+            <li>You have no orders yet.</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

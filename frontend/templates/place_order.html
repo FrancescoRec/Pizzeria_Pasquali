@@ -1,0 +1,35 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Dashboard</title>
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+</head>
+<body>
+    <h1>Welcome to your Dashboard</h1>
+    <p>You are logged in as {{ user.username }}!</p>
+
+    <!-- Pizzas Order Section -->
+    <h2>Order Pizzas</h2>
+    <form method="post" action="{% url 'place_order' %}">
+        {% csrf_token %}
+        <ul>
+            {% for pizza in pizzas %}
+            <li>
+                <input type="checkbox" name="pizza" value="{{ pizza.id }}">
+                {{ pizza.name }} - {{ pizza.price }} USD
+                <label>Quantity:</label>
+                <input type="number" name="quantity" value="1" min="1">
+            </li>
+            {% endfor %}
+        </ul>
+        <button type="submit">Place Order</button>
+    </form>
+
+    <div class="form-footer">
+        <p><a href="{% url 'login' %}">Logout</a></p>
+    </div>
+</body>
+</html>
