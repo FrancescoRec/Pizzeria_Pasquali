@@ -24,7 +24,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
 
     # App URLs with unique base paths
-    path('pizzas/', include('api.pizzas.urls')),  
+    path('', include('api.pizzas.urls')), 
     path('employees/', include('api.employees.urls')),  
     path('customers/', include('api.customers.urls')),  
     path('', include('api.authentication.urls')),
