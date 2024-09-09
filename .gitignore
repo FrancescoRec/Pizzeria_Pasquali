@@ -1,6 +1,5 @@
-# This file tells Git which files and directories to ignore in this project.
-# It prevents unnecessary files from being tracked in the repository.
 
+# Ignore Django migration files, except the __init__.py needed to mark the folder as a package
 # Ignore Python bytecode and cache directories
 __pycache__/
 .pytest_cache/
@@ -9,9 +8,9 @@ __pycache__/
 # Ignore SQLite database file (only used in local development)
 db.sqlite3
 
-# Ignore Django migration files, except the __init__.py needed to mark the folder as a package
-*/migrations/*
-!*/migrations/__init__.py
+# Ignore all migrations in apps inside `api/`, except the __init__.py file
+api/**/migrations/*.py
+!api/**/migrations/__init__.py
 
 
 
