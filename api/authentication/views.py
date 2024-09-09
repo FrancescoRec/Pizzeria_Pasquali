@@ -1,6 +1,5 @@
 from django.shortcuts import render, redirect
-from django.contrib.auth import authenticate, login
-from django.contrib.auth.models import User
+from django.contrib.auth import login
 from .forms import UserRegistrationForm
 from api.employees.models import Employee
 from api.customers.models import Customer
@@ -25,20 +24,33 @@ def register(request):
 
             # Automatically log in the user after registration
             login(request, new_user)
-            return redirect('dashboard')  # Redirect to a dashboard or home page
+
+            # Redirect based on employee status
+            if hasattr(new_user, 'employee') and new_user.employee.is_approved:
+                return redirect('employee_dashboard')  # Redirect to employee dashboard if approved
+            else:
+                return redirect('dashboard')  # Redirect to normal dashboard otherwise
     else:
         form = UserRegistrationForm()
 
     return render(request, 'registration/register.html', {'form': form})
 
-# Dashboard view (placeholder for post-login)
+# Dashboard view (redirects employees to employee dashboard if they are approved)
 @login_required
 def dashboard(request):
+    # Check if the user is an employee and is approved
+    if hasattr(request.user, 'employee') and request.user.employee.is_approved:
+        return redirect('employee_dashboard')  # Redirect to employee dashboard if approved
     return render(request, 'dashboard.html')
 
+# Employee dashboard view
 @login_required
 def employee_dashboard(request):
-    if request.user.employee.is_approved:
-        return render(request, 'employee_dashboard.html')
+    # Check if the user has an associated employee object
+    if hasattr(request.user, 'employee'):
+        if request.user.employee.is_approved:
+            return render(request, 'employee_dashboard.html')
+        else:
+            return HttpResponse("You are still pending approval.")
     else:
         return HttpResponse("You are not approved to access this page.")

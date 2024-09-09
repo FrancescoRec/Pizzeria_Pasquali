@@ -12,30 +12,69 @@
         <h2>Register</h2>
         <form id="register-form" method="post">
             {% csrf_token %}
+            
+            <!-- Display non-field form-wide errors -->
+            {% if form.non_field_errors %}
+                <ul class="errorlist">
+                    {% for error in form.non_field_errors %}
+                        <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+
+            <!-- Username Field and Errors -->
             {{ form.username.label_tag }}<br>
             {{ form.username }}<br>
-            
+            {% if form.username.errors %}
+                <ul class="errorlist">
+                    {% for error in form.username.errors %}
+                        <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+
+            <!-- Email Field and Errors -->
             {{ form.email.label_tag }}<br>
             {{ form.email }}<br>
-            
+            {% if form.email.errors %}
+                <ul class="errorlist">
+                    {% for error in form.email.errors %}
+                        <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+
+            <!-- Password Field and Errors -->
             {{ form.password.label_tag }}<br>
             {{ form.password }}<br>
-            
+            {% if form.password.errors %}
+                <ul class="errorlist">
+                    {% for error in form.password.errors %}
+                        <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+
+            <!-- Confirm Password Field and Errors -->
             {{ form.password2.label_tag }}<br>
             {{ form.password2 }}<br>
+            {% if form.password2.errors %}
+                <ul class="errorlist">
+                    {% for error in form.password2.errors %}
+                        <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
 
-            <!-- Replace dropdown with radio buttons -->
+            <!-- User Type (Employee/Customer) -->
             <div>
-                <label>
-                    <input type="radio" name="user_type" value="employee" required> Employee
-                </label><br>
-                <label>
-                    <input type="radio" name="user_type" value="customer" required> Customer
-                </label>
+                <strong>{{ form.user_type.label }}</strong><br>
+                {{ form.user_type }}  <!-- Renders radio buttons for Employee and Customer -->
             </div>
 
             <button type="submit">Register</button>
         </form>
+
         <div class="form-footer">
             <p>Already have an account? <a href="{% url 'login' %}">Login here</a></p>
         </div>
