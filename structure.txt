@@ -1,17 +1,17 @@
 pizzeria_project/
 │
-├── static/
-│   ├── styles.css  # Your CSS files for styling
-│   ├── images/     # New folder to store image files
-│       ├── logo.png
-│       ├── background.jpg
-│
-├── templates/
-│   ├── registration/
-│   │   ├── login.html
-│   │   ├── register.html
-│   ├── dashboard.html
-│   ├── employee_dashboard.html
+├── frontend/
+│   ├── static/  # Static files (CSS, JS, images)
+│   │   ├── styles.css
+│   │   ├── images/
+│   │       ├── logo.png
+│   │       ├── background.jpg
+│   ├── templates/  # HTML templates
+│   │   ├── registration/
+│   │   │   ├── login.html
+│   │   │   ├── register.html
+│   │   ├── dashboard.html
+│   │   ├── employee_dashboard.html
 │
 ├── api/
 │   │ 
