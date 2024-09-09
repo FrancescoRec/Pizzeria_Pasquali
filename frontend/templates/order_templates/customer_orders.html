@@ -20,6 +20,19 @@
                         <li>{{ item.quantity }} x {{ item.pizza.name }}</li>
                     {% endfor %}
                 </ul>
+
+                <!-- Show the button if the order is pending -->
+                {% if order.status == 'pending' %}
+                    <form method="post" action="{% url 'request_order_change' order.id %}">
+                        {% csrf_token %}
+                        <label for="status">It is arrived?</label>
+                        <select name="status" id="status">
+                            <option value="picked up">Yes!</option>
+                            <option value="rejected">Rejected</option>
+                        </select>
+                        <button type="submit">Request Status Change</button>
+                    </form>
+                {% endif %}
             </li>
         {% empty %}
             <li>You have no orders yet.</li>

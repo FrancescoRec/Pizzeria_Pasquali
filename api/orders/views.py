@@ -3,6 +3,8 @@ from django.contrib.auth.decorators import login_required
 from .models import Order, OrderItem
 from api.pizzas.models import Pizza
 from api.customers.models import Customer
+from django.shortcuts import get_object_or_404
+from django.http import HttpResponseForbidden
 
 @login_required
 def customer_orders(request):
@@ -40,3 +42,25 @@ def place_order(request):
         return redirect('customer_orders')
 
     return render(request, 'order_templates/place_order.html', {'pizzas': pizzas})
+
+@login_required
+def request_order_change(request, order_id):
+    customer = Customer.objects.get(user=request.user)
+    order = get_object_or_404(Order, id=order_id)
+
+    # Ensure the order belongs to the logged-in customer and is still pending
+    if order.customer != customer or order.status != 'pending':
+        return HttpResponseForbidden("You are not allowed to change this order.")
+
+    if request.method == 'POST':
+        new_status = request.POST.get('status')
+        
+        # Ensure the new status is valid
+        if new_status in dict(Order.STATUS_CHOICES).keys():
+            order.status = new_status
+            order.save()
+            return redirect('customer_orders')  # Redirect back to the orders page after updating
+        else:
+            return HttpResponseForbidden("Invalid status.")
+    
+    return redirect('customer_orders')

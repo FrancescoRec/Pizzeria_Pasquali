@@ -6,9 +6,8 @@ from api.pizzas.models import Pizza
 class Order(models.Model):
     STATUS_CHOICES = [
         ('pending', 'Pending'),
-        ('approved', 'Approved'),
         ('rejected', 'Rejected'),
-        ('fulfilled', 'Fulfilled'),
+        ('picked up', 'Picked up'),
     ]
 
     customer = models.ForeignKey(Customer, on_delete=models.CASCADE)
