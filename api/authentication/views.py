@@ -2,8 +2,8 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.models import User
 from .forms import UserRegistrationForm
-from employees.models import Employee
-from customers.models import Customer
+from api.employees.models import Employee
+from api.customers.models import Customer
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
 

@@ -1,58 +1,69 @@
 pizzeria_project/
 │
-├── pizzeria_project/
-│   ├── __init__.py
-│   ├── asgi.py
-│   ├── settings.py  # Include auth app in INSTALLED_APPS
-│   ├── urls.py  # Global URL routing
-│   ├── wsgi.py
+├── static/
+│   ├── styles.css  # Your CSS files for styling
+│   ├── images/     # New folder to store image files
+│       ├── logo.png
+│       ├── background.jpg
 │
-├── pizzas/  # App for pizza management
-│   ├── __init__.py
-│   ├── admin.py
-│   ├── apps.py
-│   ├── models.py
-│   ├── serializers.py
-│   ├── views.py
-│   ├── urls.py  # App-specific URLs
+├── templates/
+│   ├── registration/
+│   │   ├── login.html
+│   │   ├── register.html
+│   ├── dashboard.html
+│   ├── employee_dashboard.html
 │
-├── orders/  # App for handling customer orders
+├── api/
+│   │ 
 │   ├── __init__.py
-│   ├── admin.py
-│   ├── apps.py
-│   ├── models.py
-│   ├── serializers.py
-│   ├── views.py
-│   ├── urls.py
+│   │ 
+│   ├── pizzas/
+│   │   ├── __init__.py
+│   │   ├── admin.py
+│   │   ├── apps.py
+│   │   ├── models.py
+│   │   ├── serializers.py
+│   │   ├── views.py
+│   │   ├── urls.py
+│   ├── orders/
+│   │   ├── __init__.py
+│   │   ├── admin.py
+│   │   ├── apps.py
+│   │   ├── models.py
+│   │   ├── serializers.py
+│   │   ├── views.py
+│   │   ├── urls.py
+│   ├── employees/
+│   │   ├── __init__.py
+│   │   ├── admin.py
+│   │   ├── apps.py
+│   │   ├── models.py
+│   │   ├── serializers.py
+│   │   ├── views.py
+│   │   ├── urls.py
+│   ├── customers/
+│   │   ├── __init__.py
+│   │   ├── admin.py
+│   │   ├── apps.py
+│   │   ├── models.py
+│   │   ├── serializers.py
+│   │   ├── views.py
+│   │   ├── urls.py
+│   ├── authentication/
+│   │   ├── __init__.py
+│   │   ├── admin.py
+│   │   ├── apps.py
+│   │   ├── models.py
+│   │   ├── serializers.py
+│   │   ├── views.py
+│   │   ├── urls.py
+│   │   ├── permissions.py  # Optional
+│   │   ├── tests.py
 │
-├── employees/  # App for employee management
-│   ├── __init__.py
-│   ├── admin.py
-│   ├── apps.py
-│   ├── models.py
-│   ├── serializers.py
-│   ├── views.py
-│   ├── urls.py
-│
-├── customers/  # App for customer profiles and data
-│   ├── __init__.py
-│   ├── admin.py
-│   ├── apps.py
-│   ├── models.py
-│   ├── serializers.py
-│   ├── views.py
-│   ├── urls.py
-│
-├── authentication/  # New App for user authentication
-│   ├── __init__.py
-│   ├── admin.py
-│   ├── apps.py
-│   ├── models.py  # Extend Django's User model if necessary
-│   ├── serializers.py  # Handle user data serialization for API
-│   ├── views.py  # Views for login, registration, etc.
-│   ├── urls.py  # URL routes for login, logout, registration
-│   ├── permissions.py  # Optional, custom permissions for user access
-│   ├── tests.py
-│
+├── .gitignore
+├── db.sqlite3  # Database
 ├── manage.py
-└── Pipfile  # Includes Django, DRF, and other dependencies
+├── Pipfile
+├── Pipfile.lock
+├── pytest.ini
+├── structure.txt

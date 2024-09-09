@@ -1,7 +1,7 @@
 from django import forms
 from django.contrib.auth.models import User
-from employees.models import Employee
-from customers.models import Customer
+from api.employees.models import Employee
+from api.customers.models import Customer
 
 class UserRegistrationForm(forms.ModelForm):
     password = forms.CharField(label='Password', widget=forms.PasswordInput)

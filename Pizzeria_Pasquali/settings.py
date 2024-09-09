@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     "api.orders.apps.OrdersConfig",
     "api.employees.apps.EmployeesConfig",
     "api.customers.apps.CustomersConfig",
+    "api.authentication.apps.AuthenticationConfig",
 ]
 
 # SITE_ID = 1

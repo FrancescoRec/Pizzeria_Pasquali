@@ -25,7 +25,7 @@ urlpatterns = [
     path('', include('api.pizzas.urls')),  # Include pizzas app URLs
     path('', include('api.employees.urls')),  # Include employees app URLs
     path('', include('api.customers.urls')),  # Include customers app URLs
-    # path('', include('api.uthentication.urls')), 
+    path('', include('api.authentication.urls')), 
     # path('orders/', include('orders.urls')),  # Include orders app URLs
 
     # path('', include('authentication.urls')),  # Include authentication app URLs
