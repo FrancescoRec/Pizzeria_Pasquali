@@ -8,7 +8,7 @@ from api.customers.models import Customer
 def customer_orders(request):
     customer = Customer.objects.get(user=request.user)
     orders = Order.objects.filter(customer=customer)  # Fetch orders for the logged-in customer
-    return render(request, 'customer_orders.html', {'orders': orders})
+    return render(request, 'order_templates/customer_orders.html', {'orders': orders})
 
 @login_required
 def place_order(request):
@@ -39,7 +39,7 @@ def place_order(request):
         # Redirect to 'customer_orders' to see order history
         return redirect('customer_orders')
 
-    return render(request, 'place_order.html', {'pizzas': pizzas})
+    return render(request, 'order_templates/place_order.html', {'pizzas': pizzas})
 
 
 

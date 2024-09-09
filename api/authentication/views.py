@@ -3,7 +3,6 @@ from django.contrib.auth import login
 from .forms import UserRegistrationForm
 from api.employees.models import Employee
 from api.customers.models import Customer
-from api.pizzas.models import Pizza
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
 
@@ -26,33 +25,27 @@ def register(request):
             # Automatically log in the user after registration
             login(request, new_user)
 
-            # Redirect based on employee status
-            if hasattr(new_user, 'employee') and new_user.employee.is_approved:
-                return redirect('employee_dashboard')  # Redirect to employee dashboard if approved
-            else:
-                return redirect('dashboard')  # Redirect to normal dashboard otherwise
+            # Redirect to dashboard after successful registration
+            return redirect('dashboard')
     else:
         form = UserRegistrationForm()
 
     return render(request, 'registration/register.html', {'form': form})
 
-# Dashboard view (redirects employees to employee dashboard if they are approved)
+# Dashboard View (handles both employees and customers)
 @login_required
 def dashboard(request):
-    pizzas = Pizza.objects.all()
-    # Check if the user is an employee and is approved
-    if hasattr(request.user, 'employee') and request.user.employee.is_approved:
-        return redirect('employee_dashboard')  # Redirect to employee dashboard if approved
-    return render(request, 'dashboard.html', {'pizzas': pizzas})
-
-# Employee dashboard view
-@login_required
-def employee_dashboard(request):
     # Check if the user has an associated employee object
     if hasattr(request.user, 'employee'):
         if request.user.employee.is_approved:
-            return render(request, 'employee_dashboard.html')
+            return redirect('employee_dashboard')  # Redirect to employee dashboard if approved
         else:
-            return HttpResponse("You are still pending approval.")
+            return HttpResponse("You are still pending approval.")  # Message for unapproved employees
     else:
-        return HttpResponse("You are not approved to access this page.")
+        # If the user is not an employee (they are a customer), render the customer dashboard
+        return render(request, 'dashboard.html')
+
+# Employee Dashboard View
+@login_required
+def employee_dashboard(request):
+    return render(request, 'employee_dashboard.html')
