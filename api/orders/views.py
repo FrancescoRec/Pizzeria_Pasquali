@@ -5,6 +5,15 @@ from api.pizzas.models import Pizza
 from api.customers.models import Customer
 from django.shortcuts import get_object_or_404
 from django.http import HttpResponseForbidden
+from .serializer import OrderSerializer
+from rest_framework import viewsets
+from rest_framework.permissions import IsAuthenticated
+
+
+class OrderViewSet(viewsets.ModelViewSet):
+    queryset = Order.objects.all()
+    serializer_class = OrderSerializer
+    permission_classes = [IsAuthenticated] 
 
 @login_required
 def customer_orders(request):
