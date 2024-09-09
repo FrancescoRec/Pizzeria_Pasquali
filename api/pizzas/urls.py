@@ -4,8 +4,8 @@ from .views import PizzaViewSet, ToppingViewSet  # Import your viewsets
 
 # Create a router and register your viewsets
 router = DefaultRouter()
-router.register(r'pizzas', PizzaViewSet, basename='pizza')  # 'pizza-list' and 'pizza-detail'
-router.register(r'toppings', ToppingViewSet, basename='topping')  # 'topping-list' and 'topping-detail'
+router.register(r'', PizzaViewSet, basename='pizza')  # 'pizza-list' and 'pizza-detail'
+router.register(r'', ToppingViewSet, basename='topping')  # 'topping-list' and 'topping-detail'
 
 urlpatterns = [
     path('', include(router.urls)),  # Include the router-generated URLs

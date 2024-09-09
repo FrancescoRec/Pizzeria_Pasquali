@@ -20,16 +20,19 @@ from django.urls import path,include
 from drf_spectacular.views import SpectacularAPIView, SpectacularSwaggerView, SpectacularRedocView
 
 urlpatterns = [
-    #admin urls
+    # Admin URLs
     path('admin/', admin.site.urls),
 
-    #app urls
-    path('', include('api.pizzas.urls')),  
-    path('', include('api.employees.urls')),  
-    path('', include('api.customers.urls')),  
-# path('orders/', include('orders.urls')),  # Include orders app URLs
-    # authentication app urls
-    path('', include('api.authentication.urls')), 
+    # App URLs with unique base paths
+    path('pizzas/', include('api.pizzas.urls')),  
+    path('employees/', include('api.employees.urls')),  
+    path('customers/', include('api.customers.urls')),  
+    path('', include('api.authentication.urls')),
+
+    # API documentation URLs
+    path('schema/', SpectacularAPIView.as_view(), name='schema'),
+    path('docs/', SpectacularSwaggerView.as_view(url_name='schema'), name='swagger-ui'),
+    path('redoc/', SpectacularRedocView.as_view(url_name='schema'), name='redoc'),
 
     # API documentation URLs
     path('schema/', SpectacularAPIView.as_view(), name='schema'),

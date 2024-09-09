@@ -4,7 +4,7 @@ from .views import CustomerViewSet
 
 # Create a router and register your viewsets
 router = DefaultRouter()
-router.register(r'customers', CustomerViewSet, basename='customer')  
+router.register(r'', CustomerViewSet, basename='customer')  
 urlpatterns = [
     path('', include(router.urls)),  
 ]

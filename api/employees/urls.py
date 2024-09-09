@@ -4,7 +4,7 @@ from .views import EmployeeViewSet
 
 # Create a router and register your viewsets
 router = DefaultRouter()
-router.register(r'employees', EmployeeViewSet, basename='employee')  
+router.register(r'', EmployeeViewSet, basename='employee')  
 urlpatterns = [
     path('', include(router.urls)),  
 ]
