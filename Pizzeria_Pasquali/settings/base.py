@@ -13,6 +13,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     # Third-party apps
     "rest_framework",
+    "drf-spectacular",
     # Local apps
     "api.pizzas.apps.PizzasConfig",
     "api.orders.apps.OrdersConfig",
@@ -60,6 +61,13 @@ REST_FRAMEWORK = {
         'rest_framework.authentication.BasicAuthentication',
         'rest_framework.authentication.TokenAuthentication',
     ],
+    'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
+}
+
+SPECTACULAR_SETTINGS = {
+    'TITLE': 'Pizzeria Pasquali API',
+    'DESCRIPTION': 'API for Pizzeria Pasquali',
+    'VERSION': '1.0.0',
 }
 
 # Password validation
