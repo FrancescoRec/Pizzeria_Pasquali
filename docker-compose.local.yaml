@@ -1,0 +1,31 @@
+version: '3.11'
+
+services:
+  django:
+    container_name: Pizzeria_Pasquali_App
+    build:
+      context: .
+      dockerfile: compose/local/Dockerfile
+    image: your_project_django_local:latest
+    ports:
+      - "8000:8000"
+    volumes:
+      - .:/your-django-project
+    environment:
+      - DJANGO_SETTINGS_MODULE=Pizzeria_Pasquali.settings.local
+    command: python manage.py runserver 0.0.0.0:8000 --settings=Pizzeria_Pasquali.settings.local
+
+  db:
+    container_name: postgres_local
+    image: postgres:14
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    environment:
+      POSTGRES_DB: your_db_name
+      POSTGRES_USER: your_db_user
+      POSTGRES_PASSWORD: your_db_password
+    ports:
+      - "5432:5432"
+
+volumes:
+  postgres_data:

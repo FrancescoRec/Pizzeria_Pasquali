@@ -1,0 +1,37 @@
+version: '3.11'
+
+services:
+  django:
+    container_name: Pizzeria_Pasquali_App
+    build:
+      context: .
+      dockerfile: compose/production/Dockerfile
+    ports:
+      - "8000:8000"
+    environment:
+      - DJANGO_SETTINGS_MODULE=Pizzeria_Pasquali.settings.production
+    command: gunicorn Pizzeria_Pasquali.wsgi:application --bind 0.0.0.0:8000 --workers 4
+
+  db:
+    container_name: postgres_production
+    image: postgres:14
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    environment:
+      POSTGRES_DB: your_db_name
+      POSTGRES_USER: your_db_user
+      POSTGRES_PASSWORD: your_db_password
+    ports:
+      - "5432:5432"
+
+  nginx:
+    image: nginx:alpine
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf
+    depends_on:
+      - django
+
+volumes:
+  postgres_data:
