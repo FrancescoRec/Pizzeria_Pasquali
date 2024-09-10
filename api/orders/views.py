@@ -85,7 +85,7 @@ def update_order_status(request, order_id):
     
     if request.method == 'POST':
         new_status = request.POST.get('status')
-        if new_status in ['pending', 'approved', 'rejected', 'fulfilled']:
+        if new_status in ['pending', 'rejected', 'picked up']:
             order.status = new_status
             order.save()
 
