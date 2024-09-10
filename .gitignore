@@ -12,6 +12,9 @@ db.sqlite3
 api/**/migrations/*.py
 !api/**/migrations/__init__.py
 
+# Ignore .env
+.env
+
 
 
 

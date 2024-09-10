@@ -1,0 +1,5 @@
+Django
+djangorestframework
+pytest-django
+black
+drf-spectacular
