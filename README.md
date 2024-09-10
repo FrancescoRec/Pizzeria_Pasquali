@@ -1,4 +1,4 @@
-# **Pizzeria Pasquali 🍕👨‍🍳 **
+# **Pizzeria Pasquali 🍕👨‍🍳**
 
 A note from the creator:
 
@@ -48,7 +48,7 @@ Pizzeria Pasquali is a Django-based web application that allows customers to pla
 
 ---
 
-## **Technologies 💻 **
+## **Technologies 💻**
 - **Python** 3.11
 - **Django** 5.1.1
 - **Django Rest Framework** (DRF)
@@ -214,7 +214,7 @@ Pizzeria_Pasquali/
 
 ---
 
-## **License **
+## **License**
 
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more information.
 
