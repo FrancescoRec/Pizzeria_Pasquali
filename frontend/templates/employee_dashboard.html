@@ -1,1 +1,61 @@
-<H1>Employee Dashboard</H1>
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Dashboard</title>
+    <link rel="stylesheet" href="{% static 'styles_employee.css' %}">
+</head>
+<body>
+    <h1>Welcome to the Employee Dashboard, {{ user.username }}!</h1>
+
+    <h2>All Orders</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Order ID</th>
+                <th>Customer</th>
+                <th>Status</th>
+                <th>Total Price</th>
+                <th>Items</th>
+                <th>Update Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for order in orders %}
+            <tr>
+                <td>{{ order.id }}</td>
+                <td>{{ order.customer.user.username }}</td>
+                <td>{{ order.status }}</td>
+                <td>{{ order.total_price }} USD</td>
+                <td>
+                    <ul>
+                        {% for item in order.items.all %}
+                        <li>{{ item.pizza.name }} x {{ item.quantity }}</li>
+                        {% endfor %}
+                    </ul>
+                </td>
+                <td>
+                    <form method="POST" action="{% url 'update_order_status' order.id %}">
+                        {% csrf_token %}
+                        <select name="status">
+                            <option value="pending" {% if order.status == "pending" %}selected{% endif %}>Pending</option>
+                            <option value="picked up" {% if order.status == "picked up" %}selected{% endif %}>Picked Up</option>
+                            <option value="rejected" {% if order.status == "rejected" %}selected{% endif %}>Rejected</option>
+                        </select>
+                        <button type="submit">Update</button>
+                    </form>
+                </td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="6">No orders available</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <p><a href="{% url 'login' %}">Logout</a></p>
+</body>
+</html>

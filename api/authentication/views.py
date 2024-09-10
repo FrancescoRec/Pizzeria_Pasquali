@@ -3,6 +3,7 @@ from django.contrib.auth import login
 from .forms import UserRegistrationForm
 from api.employees.models import Employee
 from api.customers.models import Customer
+from api.orders.models import Order
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
 
@@ -48,4 +49,10 @@ def dashboard(request):
 # Employee Dashboard View
 @login_required
 def employee_dashboard(request):
-    return render(request, 'employee_dashboard.html')
+    # Ensure the user is an approved employee
+    if hasattr(request.user, 'employee') and request.user.employee.is_approved:
+        # Fetch all orders for display
+        orders = Order.objects.all()  # Get all orders
+        return render(request, 'employee_dashboard.html', {'orders': orders})
+    else:
+        return HttpResponse("You do not have permission to access this page.")

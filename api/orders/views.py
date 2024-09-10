@@ -8,6 +8,7 @@ from django.http import HttpResponseForbidden
 from .serializer import OrderSerializer
 from rest_framework import viewsets
 from rest_framework.permissions import IsAuthenticated
+from django.http import HttpResponse
 
 
 class OrderViewSet(viewsets.ModelViewSet):
@@ -73,3 +74,19 @@ def request_order_change(request, order_id):
             return HttpResponseForbidden("Invalid status.")
     
     return redirect('customer_orders')
+
+@login_required
+def update_order_status(request, order_id):
+    # Check if user is an employee
+    if not hasattr(request.user, 'employee') or not request.user.employee.is_approved:
+        return HttpResponse("You do not have permission to access this page.")
+
+    order = get_object_or_404(Order, id=order_id)
+    
+    if request.method == 'POST':
+        new_status = request.POST.get('status')
+        if new_status in ['pending', 'approved', 'rejected', 'fulfilled']:
+            order.status = new_status
+            order.save()
+
+    return redirect('employee_dashboard')
