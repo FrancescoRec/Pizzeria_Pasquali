@@ -53,7 +53,7 @@ def employee_dashboard(request):
         return HttpResponseForbidden("You do not have permission to access this page.")
     
     # Fetch all orders for employees
-    orders = Order.objects.all()
+    orders = Order.objects.all().order_by('-id')
 
     return render(request, 'employee_dashboard.html', {'orders': orders})
 
