@@ -51,5 +51,9 @@ def dashboard(request):
 def employee_dashboard(request):
     if not hasattr(request.user, 'employee') or not request.user.employee.is_approved:
         return HttpResponseForbidden("You do not have permission to access this page.")
+    
+    # Fetch all orders for employees
+    orders = Order.objects.all()
 
-    return render(request, 'employee_dashboard.html')
+    return render(request, 'employee_dashboard.html', {'orders': orders})
+
