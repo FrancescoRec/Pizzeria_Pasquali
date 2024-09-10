@@ -12,7 +12,7 @@ paths:
       security:
       - cookieAuth: []
       - basicAuth: []
-      - tokenAuth: []
+      - {}
       responses:
         '200':
           content:
@@ -41,7 +41,7 @@ paths:
       security:
       - cookieAuth: []
       - basicAuth: []
-      - tokenAuth: []
+      - {}
       responses:
         '201':
           content:
@@ -64,7 +64,7 @@ paths:
       security:
       - cookieAuth: []
       - basicAuth: []
-      - tokenAuth: []
+      - {}
       responses:
         '200':
           content:
@@ -98,7 +98,7 @@ paths:
       security:
       - cookieAuth: []
       - basicAuth: []
-      - tokenAuth: []
+      - {}
       responses:
         '200':
           content:
@@ -131,7 +131,7 @@ paths:
       security:
       - cookieAuth: []
       - basicAuth: []
-      - tokenAuth: []
+      - {}
       responses:
         '200':
           content:
@@ -153,7 +153,7 @@ paths:
       security:
       - cookieAuth: []
       - basicAuth: []
-      - tokenAuth: []
+      - {}
       responses:
         '204':
           description: No response body
@@ -165,7 +165,7 @@ paths:
       security:
       - cookieAuth: []
       - basicAuth: []
-      - tokenAuth: []
+      - {}
       responses:
         '200':
           content:
@@ -194,7 +194,7 @@ paths:
       security:
       - cookieAuth: []
       - basicAuth: []
-      - tokenAuth: []
+      - {}
       responses:
         '201':
           content:
@@ -217,7 +217,7 @@ paths:
       security:
       - cookieAuth: []
       - basicAuth: []
-      - tokenAuth: []
+      - {}
       responses:
         '200':
           content:
@@ -251,7 +251,7 @@ paths:
       security:
       - cookieAuth: []
       - basicAuth: []
-      - tokenAuth: []
+      - {}
       responses:
         '200':
           content:
@@ -284,7 +284,7 @@ paths:
       security:
       - cookieAuth: []
       - basicAuth: []
-      - tokenAuth: []
+      - {}
       responses:
         '200':
           content:
@@ -306,7 +306,154 @@ paths:
       security:
       - cookieAuth: []
       - basicAuth: []
-      - tokenAuth: []
+      - {}
+      responses:
+        '204':
+          description: No response body
+  /orders/api/:
+    get:
+      operationId: orders_api_list
+      tags:
+      - orders
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Order'
+          description: ''
+    post:
+      operationId: orders_api_create
+      tags:
+      - orders
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Order'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Order'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Order'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Order'
+          description: ''
+  /orders/api/{id}/:
+    get:
+      operationId: orders_api_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this order.
+        required: true
+      tags:
+      - orders
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Order'
+          description: ''
+    put:
+      operationId: orders_api_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this order.
+        required: true
+      tags:
+      - orders
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Order'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Order'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Order'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Order'
+          description: ''
+    patch:
+      operationId: orders_api_partial_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this order.
+        required: true
+      tags:
+      - orders
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedOrder'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedOrder'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedOrder'
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Order'
+          description: ''
+    delete:
+      operationId: orders_api_destroy
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this order.
+        required: true
+      tags:
+      - orders
+      security:
+      - cookieAuth: []
+      - basicAuth: []
       responses:
         '204':
           description: No response body
@@ -318,7 +465,7 @@ paths:
       security:
       - cookieAuth: []
       - basicAuth: []
-      - tokenAuth: []
+      - {}
       responses:
         '200':
           content:
@@ -347,7 +494,7 @@ paths:
       security:
       - cookieAuth: []
       - basicAuth: []
-      - tokenAuth: []
+      - {}
       responses:
         '201':
           content:
@@ -370,7 +517,7 @@ paths:
       security:
       - cookieAuth: []
       - basicAuth: []
-      - tokenAuth: []
+      - {}
       responses:
         '200':
           content:
@@ -404,7 +551,7 @@ paths:
       security:
       - cookieAuth: []
       - basicAuth: []
-      - tokenAuth: []
+      - {}
       responses:
         '200':
           content:
@@ -437,7 +584,7 @@ paths:
       security:
       - cookieAuth: []
       - basicAuth: []
-      - tokenAuth: []
+      - {}
       responses:
         '200':
           content:
@@ -459,10 +606,156 @@ paths:
       security:
       - cookieAuth: []
       - basicAuth: []
-      - tokenAuth: []
+      - {}
       responses:
         '204':
           description: No response body
+  /schema/:
+    get:
+      operationId: schema_retrieve
+      description: |-
+        OpenApi3 schema for this API. Format can be selected via content negotiation.
+
+        - YAML: application/vnd.oai.openapi
+        - JSON: application/vnd.oai.openapi+json
+      parameters:
+      - in: query
+        name: format
+        schema:
+          type: string
+          enum:
+          - json
+          - yaml
+      - in: query
+        name: lang
+        schema:
+          type: string
+          enum:
+          - af
+          - ar
+          - ar-dz
+          - ast
+          - az
+          - be
+          - bg
+          - bn
+          - br
+          - bs
+          - ca
+          - ckb
+          - cs
+          - cy
+          - da
+          - de
+          - dsb
+          - el
+          - en
+          - en-au
+          - en-gb
+          - eo
+          - es
+          - es-ar
+          - es-co
+          - es-mx
+          - es-ni
+          - es-ve
+          - et
+          - eu
+          - fa
+          - fi
+          - fr
+          - fy
+          - ga
+          - gd
+          - gl
+          - he
+          - hi
+          - hr
+          - hsb
+          - hu
+          - hy
+          - ia
+          - id
+          - ig
+          - io
+          - is
+          - it
+          - ja
+          - ka
+          - kab
+          - kk
+          - km
+          - kn
+          - ko
+          - ky
+          - lb
+          - lt
+          - lv
+          - mk
+          - ml
+          - mn
+          - mr
+          - ms
+          - my
+          - nb
+          - ne
+          - nl
+          - nn
+          - os
+          - pa
+          - pl
+          - pt
+          - pt-br
+          - ro
+          - ru
+          - sk
+          - sl
+          - sq
+          - sr
+          - sr-latn
+          - sv
+          - sw
+          - ta
+          - te
+          - tg
+          - th
+          - tk
+          - tr
+          - tt
+          - udm
+          - ug
+          - uk
+          - ur
+          - uz
+          - vi
+          - zh-hans
+          - zh-hant
+      tags:
+      - schema
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/vnd.oai.openapi:
+              schema:
+                type: object
+                additionalProperties: {}
+            application/yaml:
+              schema:
+                type: object
+                additionalProperties: {}
+            application/vnd.oai.openapi+json:
+              schema:
+                type: object
+                additionalProperties: {}
+            application/json:
+              schema:
+                type: object
+                additionalProperties: {}
+          description: ''
   /toppings/:
     get:
       operationId: toppings_list
@@ -471,7 +764,7 @@ paths:
       security:
       - cookieAuth: []
       - basicAuth: []
-      - tokenAuth: []
+      - {}
       responses:
         '200':
           content:
@@ -500,7 +793,7 @@ paths:
       security:
       - cookieAuth: []
       - basicAuth: []
-      - tokenAuth: []
+      - {}
       responses:
         '201':
           content:
@@ -523,7 +816,7 @@ paths:
       security:
       - cookieAuth: []
       - basicAuth: []
-      - tokenAuth: []
+      - {}
       responses:
         '200':
           content:
@@ -557,7 +850,7 @@ paths:
       security:
       - cookieAuth: []
       - basicAuth: []
-      - tokenAuth: []
+      - {}
       responses:
         '200':
           content:
@@ -590,7 +883,7 @@ paths:
       security:
       - cookieAuth: []
       - basicAuth: []
-      - tokenAuth: []
+      - {}
       responses:
         '200':
           content:
@@ -612,7 +905,7 @@ paths:
       security:
       - cookieAuth: []
       - basicAuth: []
-      - tokenAuth: []
+      - {}
       responses:
         '204':
           description: No response body
@@ -621,79 +914,105 @@ components:
     Customer:
       type: object
       properties:
-        user_id:
-          type: integer
-        username:
-          type: string
-          readOnly: true
+        user:
+          $ref: '#/components/schemas/User'
         phone_number:
           type: string
           maxLength: 20
-        email:
+        address:
           type: string
-          format: email
-          maxLength: 254
+          nullable: true
+          maxLength: 255
       required:
-      - user_id
-      - username
+      - user
     Employee:
       type: object
       properties:
-        user_id:
-          type: integer
-        username:
-          type: string
-          readOnly: true
+        user:
+          $ref: '#/components/schemas/User'
         position:
           type: string
           maxLength: 50
         phone_number:
           type: string
           maxLength: 20
-        email:
-          type: string
-          format: email
-          maxLength: 254
         is_approved:
           type: boolean
       required:
-      - user_id
-      - username
+      - user
+    Order:
+      type: object
+      properties:
+        customer_name:
+          type: string
+          readOnly: true
+        status:
+          $ref: '#/components/schemas/StatusEnum'
+        total_price:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,8}(?:\.\d{0,2})?$
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/OrderItem'
+      required:
+      - customer_name
+      - items
+    OrderItem:
+      type: object
+      properties:
+        pizza_name:
+          type: string
+          readOnly: true
+        quantity:
+          type: integer
+          maximum: 9223372036854775807
+          minimum: 0
+          format: int64
+      required:
+      - pizza_name
     PatchedCustomer:
       type: object
       properties:
-        user_id:
-          type: integer
-        username:
-          type: string
-          readOnly: true
+        user:
+          $ref: '#/components/schemas/User'
         phone_number:
           type: string
           maxLength: 20
-        email:
+        address:
           type: string
-          format: email
-          maxLength: 254
+          nullable: true
+          maxLength: 255
     PatchedEmployee:
       type: object
       properties:
-        user_id:
-          type: integer
-        username:
-          type: string
-          readOnly: true
+        user:
+          $ref: '#/components/schemas/User'
         position:
           type: string
           maxLength: 50
         phone_number:
           type: string
           maxLength: 20
-        email:
-          type: string
-          format: email
-          maxLength: 254
         is_approved:
           type: boolean
+    PatchedOrder:
+      type: object
+      properties:
+        customer_name:
+          type: string
+          readOnly: true
+        status:
+          $ref: '#/components/schemas/StatusEnum'
+        total_price:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,8}(?:\.\d{0,2})?$
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/OrderItem'
     PatchedPizza:
       type: object
       properties:
@@ -740,6 +1059,16 @@ components:
       - name
       - price
       - toppings
+    StatusEnum:
+      enum:
+      - pending
+      - rejected
+      - picked up
+      type: string
+      description: |-
+        * `pending` - Pending
+        * `rejected` - Rejected
+        * `picked up` - Picked up
     Topping:
       type: object
       properties:
@@ -748,6 +1077,31 @@ components:
           maxLength: 100
       required:
       - name
+    User:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        username:
+          type: string
+          description: Required. 150 characters or fewer. Letters, digits and @/./+/-/_
+            only.
+          pattern: ^[\w.@+-]+$
+          maxLength: 150
+        password:
+          type: string
+          writeOnly: true
+          maxLength: 128
+        email:
+          type: string
+          format: email
+          title: Email address
+          maxLength: 254
+      required:
+      - id
+      - password
+      - username
   securitySchemes:
     basicAuth:
       type: http
@@ -756,8 +1110,3 @@ components:
       type: apiKey
       in: cookie
       name: sessionid
-    tokenAuth:
-      type: apiKey
-      in: header
-      name: Authorization
-      description: Token-based authentication with required prefix "Token"

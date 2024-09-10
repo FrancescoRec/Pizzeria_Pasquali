@@ -60,6 +60,16 @@ pizzeria_project/
 │   │   ├── permissions.py  # Optional
 │   │   ├── tests.py
 │
+├── compose/
+│   ├── local/
+│   │   ├── Dockerfile
+│   ├── production/
+│   │   ├── Dockerfile
+|
+├── docker-compose.local.yml
+├── docker-compose.production.yml
+|
+├── .env 
 ├── .gitignore
 ├── db.sqlite3  # Database
 ├── manage.py
@@ -67,3 +77,6 @@ pizzeria_project/
 ├── Pipfile.lock
 ├── pytest.ini
 ├── structure.txt
+├── requirements.txt
+├── README.md
+├── schema.yml
