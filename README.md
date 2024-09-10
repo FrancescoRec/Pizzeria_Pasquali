@@ -1,10 +1,10 @@
-# **Pizzeria Pasquali 🍕 👨‍🍳 **
+# **Pizzeria Pasquali 🍕👨‍🍳 **
 
 A note from the creator:
 
-This repository was created to help small developers like myself organize their work and build an app that accomplishes tasks like order management and role-based access. It might not represent the perfect setup for every project, but it’s what works best for me and my workflow. Remember, what you see on YouTube or read in tutorials isn’t always the "best" way—it’s simply the method that works best for someone else. Find what suits you and don't be afraid to tailor it to your own needs.❤️
+This repository was created to help small developers like myself organize their work and build an app that accomplishes tasks like order management and role-based access. It might not represent the perfect setup for every project, but it’s what works best for me and my workflow. Remember, what you see on YouTube or read in tutorials isn’t always the "best" way—it’s simply the method that works best for someone else. Find what suits you and don't be afraid to tailor it to your own needs. ❤️
 
-Pizzeria Pasquali is a Django-based web application that allows customers to place pizza orders, while employees can manage those orders. The project features user authentication, role-based access control, order management, and administrative capabilities. The project is Dockerized for easy deployment and includes separate configurations for local and production environments.✨🚀
+Pizzeria Pasquali is a Django-based web application that allows customers to place pizza orders, while employees can manage those orders. The project features user authentication, role-based access control, order management, and administrative capabilities. The project is Dockerized for easy deployment and includes separate configurations for local and production environments. ✨🚀
 
 ---
 
@@ -48,7 +48,7 @@ Pizzeria Pasquali is a Django-based web application that allows customers to pla
 
 ---
 
-## **Technologies**
+## **Technologies 💻 **
 - **Python** 3.11
 - **Django** 5.1.1
 - **Django Rest Framework** (DRF)
@@ -60,7 +60,7 @@ Pizzeria Pasquali is a Django-based web application that allows customers to pla
 
 ---
 
-## **Prerequisites**
+## **Prerequisites 💾**
 - **Python 3.11** or later
 - **Docker** and **Docker Compose**
 - PostgreSQL (for production)
@@ -93,7 +93,7 @@ DATABASE_URL=postgres://user:password@localhost:5432/pizzeria_db
 
 ---
 
-## **Running the Project**
+## **Running the Project 🏃**
 
 ### **Local Development**
 1. **Run Migrations:**
@@ -113,7 +113,7 @@ DATABASE_URL=postgres://user:password@localhost:5432/pizzeria_db
 
 ---
 
-## **Docker Setup**
+## **Docker Setup 🐳**
 
 ### **1. Build and Run the Docker Containers**
 The project comes with a **Dockerfile** for both local and production environments.
@@ -148,7 +148,7 @@ Once the server is running, access the app at:
 
 ---
 
-## **API Endpoints**
+## **API Endpoints 🚕**
 
 - **Swagger API Documentation**: `/docs`
 - **Order Management**:
@@ -167,7 +167,7 @@ Ensure that test cases cover both customer and employee functionalities, as well
 
 ---
 
-## **Environment Variables**
+## **Environment Variables 🌳**
 
 Create environment variables in the `.env` file or pass them directly in your Docker Compose YAML files. Key variables include:
 - `SECRET_KEY`
@@ -177,7 +177,7 @@ Create environment variables in the `.env` file or pass them directly in your Do
 
 ---
 
-## **File Structure**
+## **File Structure 🚧**
 
 ```
 Pizzeria_Pasquali/
@@ -204,7 +204,7 @@ Pizzeria_Pasquali/
 
 ---
 
-## **Contributing**
+## **Contributing 👍**
 
 1. Fork the repository.
 2. Create a new branch (`git checkout -b feature/feature-name`).
@@ -214,7 +214,7 @@ Pizzeria_Pasquali/
 
 ---
 
-## **License**
+## **License **
 
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more information.
 
