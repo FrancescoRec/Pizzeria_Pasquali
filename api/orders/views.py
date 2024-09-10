@@ -64,8 +64,8 @@ def request_order_change(request, order_id):
 
     if request.method == 'POST':
         new_status = request.POST.get('status')
-        
-        # Ensure the new status is valid
+
+        # Ensure the new status is valid (e.g., 'picked up' is valid for customers)
         if new_status in dict(Order.STATUS_CHOICES).keys():
             order.status = new_status
             order.save()
@@ -75,11 +75,12 @@ def request_order_change(request, order_id):
     
     return redirect('customer_orders')
 
+
 @login_required
 def update_order_status(request, order_id):
     # Check if user is an employee
-    if not hasattr(request.user, 'employee') or not request.user.employee.is_approved:
-        return HttpResponse("You do not have permission to access this page.")
+    if not request.user.employee.is_approved:
+        return HttpResponseForbidden("You do not have permission to access this page.")
 
     order = get_object_or_404(Order, id=order_id)
     

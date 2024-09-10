@@ -5,7 +5,7 @@ from api.employees.models import Employee
 from api.customers.models import Customer
 from api.orders.models import Order
 from django.contrib.auth.decorators import login_required
-from django.http import HttpResponse
+from django.http import HttpResponse,HttpResponseForbidden
 
 # Registration View
 def register(request):
@@ -49,10 +49,7 @@ def dashboard(request):
 # Employee Dashboard View
 @login_required
 def employee_dashboard(request):
-    # Ensure the user is an approved employee
-    if hasattr(request.user, 'employee') and request.user.employee.is_approved:
-        # Fetch all orders for display
-        orders = Order.objects.all()  # Get all orders
-        return render(request, 'employee_dashboard.html', {'orders': orders})
-    else:
-        return HttpResponse("You do not have permission to access this page.")
+    if not hasattr(request.user, 'employee') or not request.user.employee.is_approved:
+        return HttpResponseForbidden("You do not have permission to access this page.")
+
+    return render(request, 'employee_dashboard.html')
